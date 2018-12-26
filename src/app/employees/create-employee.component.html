@@ -1,0 +1,81 @@
+<form #employeeForm="ngForm" (ngSubmit)="saveEmployee(employeeForm)">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title"> Create Employee </h3>
+    </div>
+    <div class="panel-body">
+      <div class="from-group">
+        <label for="fullName">Full Name</label>
+        <input id="fullName" name="fullname" [(ngModel)]="fullName" type="input" class="form-control">
+      </div>
+      <div class="from-group">
+        <label for="email">Email</label>
+        <input id="email" name="email" [(ngModel)]="email" type="input" class="form-control">
+      </div>
+      <div class="from-group">
+        <label for="phoneNumber">Phone Number</label>
+        <input id="phoneNumber" name="phoneNumber" [(ngModel)]="phoneNumber" type="input" class="form-control">
+      </div>
+       <div class="from-group">
+        <label>Contact Preference</label>
+        <div class="form-control">
+          <label class="radio-inline">
+            <input id="cpEmail" type="radio" value="Email" name="contactPreference" [(ngModel)]="contactPreference" >
+            Email
+          </label>
+          <label class="radio-inline">
+            <input id="cpPhone" type="radio" value="Phone" name="contactPreference" [(ngModel)]="contactPreference" >
+            Phone
+          </label>
+        </div>
+      </div>
+      <div class="from-group">
+        <label>Gender</label>
+        <div class="form-control">
+          <label class="radio-inline">
+            <input id="gMale" type="radio" value="Male" name="gender" [(ngModel)]="gender" >
+            Male
+          </label>
+          <label class="radio-inline">
+            <input id="gFemale" type="radio" value="Female" name="gender" [(ngModel)]="gender" >
+            Female
+          </label>
+        </div>
+      </div>
+      <br>
+      <div class="from-group">
+        <div class="form-control">
+          <label class="checkbox-inline">
+            <input id="gMale" type="checkbox" name="isActive" [(ngModel)]="isActive" >
+            Is Active
+          </label>
+        </div>
+      </div>
+      <div class="from-group">
+          <label for="department">
+            Department
+          </label>
+          <select id="department" name="department" class="form-control" [(ngModel)]="department">
+            <option *ngFor="let dept of deprtments" [value]="dept.id">
+              {{dept.name}}  
+            </option>  
+          </select>
+      </div>
+      <div class="row">
+        <div class="from-group col-md-3">
+            <label for="dateOfBirth">Date of Birth</label>
+            <input type="text"  id="dateOfBirth" name="dateOfbirth" [(ngModel)]="dateOfBirth" class="form-control"
+              bsDatepicker
+              [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY' }"
+              placement="right"
+            > 
+        </div>
+      </div>
+    </div>
+    <div class="panel-footer">
+      <button class="btn btn-primary" type="submit">Save</button>
+    </div>
+  </div>
+</form>
+
+Angular Generated Form Model: {{employeeForm.value | json}}
